@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
 import {S02AsyncComponent} from './s02-async.component';
 import {DebugElement} from '@angular/core';
@@ -28,10 +28,9 @@ describe('S02AsyncComponent', () => {
       .query(By.css('.set-title'))
       .triggerEventHandler('click', null);
 
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      const value = debugElement.query(By.css('h1')).nativeElement.innerText;
-      expect(value).toEqual('One crazy app!');
-    });
+    tick();
+    fixture.detectChanges();
+    const value = debugElement.query(By.css('h1')).nativeElement.innerText;
+    expect(value).toEqual('One crazy app!');
   }));
 });
