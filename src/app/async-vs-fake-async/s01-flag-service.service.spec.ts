@@ -7,13 +7,16 @@ describe('S01FlagServiceService', () => {
     let flag = false;
 
     const testPromise = new Promise((resolve) => {
-      setTimeout(() => {}, 100);
+      setTimeout(() => {
+      }, 100);
     });
 
     testPromise.then((result) => {
       flag = true;
     });
 
-    expect(flag).toBe(true);
+    setTimeout(() => {
+      expect(flag).toBe(true);
+    }, 110)
   });
 });
