@@ -28,8 +28,10 @@ describe('S02AsyncComponent', () => {
       .query(By.css('.set-title'))
       .triggerEventHandler('click', null);
 
-    fixture.detectChanges();
-    const value = debugElement.query(By.css('h1')).nativeElement.innerText;
-    expect(value).toEqual('One crazy app!');
+    setTimeout(() => {
+      fixture.detectChanges();
+      const value = debugElement.query(By.css('h1')).nativeElement.innerText;
+      expect(value).toEqual('One crazy app!');
+    }, 50);
   });
 });
