@@ -2,7 +2,7 @@ import {S01FlagServiceService} from './s01-flag-service.service';
 
 describe('S01FlagServiceService', () => {
 
-  fit('some thing should happen when we do some thing', () => {
+  it('some thing should happen when we do some thing', () => {
 
     let flag = false;
 
