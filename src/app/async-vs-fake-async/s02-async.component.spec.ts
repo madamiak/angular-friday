@@ -23,15 +23,15 @@ describe('S02AsyncComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should display title', () => {
+  fit('should display title', async(() => {
     debugElement
       .query(By.css('.set-title'))
       .triggerEventHandler('click', null);
 
-    setTimeout(() => {
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
       const value = debugElement.query(By.css('h1')).nativeElement.innerText;
       expect(value).toEqual('One crazy app!');
-    }, 50);
-  });
+    });
+  }));
 });
