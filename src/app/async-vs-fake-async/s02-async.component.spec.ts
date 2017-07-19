@@ -24,11 +24,13 @@ describe('S02AsyncComponent', () => {
   });
 
   fit('should display title', fakeAsync(() => {
-    debugElement
-      .query(By.css('.set-title'))
-      .triggerEventHandler('click', null);
+    setTimeout(() => {
+      debugElement
+        .query(By.css('.set-title'))
+        .triggerEventHandler('click', null);
+    }, 1000);
 
-    tick();
+    tick(1000);
     fixture.detectChanges();
     const value = debugElement.query(By.css('h1')).nativeElement.innerText;
     expect(value).toEqual('One crazy app!');
