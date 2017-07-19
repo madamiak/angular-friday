@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {S02AsyncComponent} from './s02-async.component';
 import {DebugElement} from '@angular/core';
@@ -23,7 +23,7 @@ describe('S02AsyncComponent', () => {
     fixture.detectChanges();
   });
 
-  fit('should display title', async(() => {
+  fit('should display title', fakeAsync(() => {
     debugElement
       .query(By.css('.set-title'))
       .triggerEventHandler('click', null);
