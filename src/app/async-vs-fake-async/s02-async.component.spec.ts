@@ -30,9 +30,14 @@ describe('S02AsyncComponent', () => {
         .triggerEventHandler('click', null);
     }, 1000);
 
-    tick(1000);
+    tick(500);
     fixture.detectChanges();
-    const value = debugElement.query(By.css('h1')).nativeElement.innerText;
+    let value = debugElement.query(By.css('h1')).nativeElement.innerText;
+    expect(value).toEqual('');
+
+    tick(500);
+    fixture.detectChanges();
+    value = debugElement.query(By.css('h1')).nativeElement.innerText;
     expect(value).toEqual('One crazy app!');
   }));
 });
