@@ -24,11 +24,11 @@ describe('S02AsyncComponent', () => {
   });
 
   fit('should display title', fakeAsync(() => {
-    setTimeout(() => {
+    Promise.resolve(true).then(() => {
       debugElement
         .query(By.css('.set-title'))
         .triggerEventHandler('click', null);
-    }, 1000);
+    });
 
     flushMicrotasks();
     fixture.detectChanges();
