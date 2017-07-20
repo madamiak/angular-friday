@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, flushMicrotasks, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
 
 import {S02AsyncComponent} from './s02-async.component';
 import {DebugElement} from '@angular/core';
@@ -34,7 +34,7 @@ describe('S02AsyncComponent', () => {
       }, 1000)
     });
 
-    flushMicrotasks();
+    tick(1000);
     fixture.detectChanges();
     const value = debugElement.query(By.css('h1')).nativeElement.innerText;
     expect(value).toEqual('One crazy app!');
