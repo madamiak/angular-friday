@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
 
 import {S02AsyncComponent} from './s02-async.component';
 import {DebugElement} from '@angular/core';
@@ -30,14 +30,9 @@ describe('S02AsyncComponent', () => {
         .triggerEventHandler('click', null);
     }, 1000);
 
-    tick(500);
+    flushMicrotasks();
     fixture.detectChanges();
-    let value = debugElement.query(By.css('h1')).nativeElement.innerText;
-    expect(value).toEqual('');
-
-    tick(500);
-    fixture.detectChanges();
-    value = debugElement.query(By.css('h1')).nativeElement.innerText;
+    const value = debugElement.query(By.css('h1')).nativeElement.innerText;
     expect(value).toEqual('One crazy app!');
   }));
 });
