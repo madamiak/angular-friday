@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, flushMicrotasks, TestBed} from '@angular/core/testing';
 
 import {S02AsyncComponent} from './s02-async.component';
 import {DebugElement} from '@angular/core';
@@ -27,9 +27,11 @@ describe('S02AsyncComponent', () => {
 
   fit('should display title', fakeAsync(() => {
     Observable.of(Promise.resolve(true)).subscribe(() => {
-      debugElement
-        .query(By.css('.set-title'))
-        .triggerEventHandler('click', null);
+      setTimeout(() => {
+        debugElement
+          .query(By.css('.set-title'))
+          .triggerEventHandler('click', null);
+      }, 1000)
     });
 
     flushMicrotasks();
